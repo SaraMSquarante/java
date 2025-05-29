@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- Define o idioma da página como português do Brasil -->
+<head>
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres para suportar acentuação -->
+    <title>Cadastro de Usuário</title> <!-- Título que aparece na aba do navegador -->
+    
+    <style>
+        /* Estilo para o corpo da página */
+        body {
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            max-width: 400px; /* Largura máxima da área de conteúdo */
+        }
+
+        /* Estilo para os rótulos */
+        label {
+            display: block;
+            margin-top: 10px; 
+        }
+
+        /* Estilo para os campos de entrada e botão */
+        input, button {
+            width: 100%; /* Ocupam toda a largura disponível */
+            padding: 8px; 
+            margin-top: 5px; 
+        }
+
+        /* Estilo para o parágrafo de resultado */
+        #resultado {
+            margin-top: 20px; /* Espaço acima da mensagem */
+            font-weight: bold; /* Texto em negrito */
+            color: blue; /* Cor do texto azul */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cadastro de Usuário</h1> <!-- Título principal da página -->
+
+    <!-- Campo de entrada para o nome -->
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome">
+
+    <!-- Campo de entrada para o e-mail -->
+    <label for="email">E-mail:</label>
+    <input type="email" id="email">
+
+    <!-- Campo de entrada para a idade -->
+    <label for="idade">Idade:</label>
+    <input type="number" id="idade">
+
+    <!-- Campo de entrada para o endereço -->
+    <label for="endereco">Endereço/Bairro:</label>
+    <input type="text" id="endereco">
+
+    <!-- Botão que executa a função cadastrar() ao ser clicado -->
+    <button onclick="cadastrar()">Concluir o Cadastrar</button>
+
+    <!-- Parágrafo onde será exibida a mensagem de resultado -->
+    <p id="resultado"></p>
+
+    <script>
+      
+        function cadastrar() {
+
+            // Captura os valores digitados nos campos de entrada
+            const nome = document.getElementById('nome').value; // Pega o valor do input com id="nome"
+            const email = document.getElementById('email').value; // Pega o valor do input com id="email"
+            const idade = document.getElementById('idade').value; // Pega o valor do input com id="idade"
+            const endereco = document.getElementById('endereco').value; // Pega o valor do input com id="endereco"
+
+            // Validação: verifica se algum campo está vazio
+            if (nome === '' || email === '' || idade === '' || endereco === '') {
+               
+                // Se algum campo estiver vazio, exibe mensagem de erro em vermelho
+                document.getElementById('resultado').style.color = 'red';
+                document.getElementById('resultado').innerText = 'Por favor, preencha todos os campos.';
+            } else {
+                
+                // Se todos os campos estiverem preenchidos, monta a mensagem de confirmação
+                const mensagem = `Usuário cadastrado: ${nome} (${email}), ${idade} anos, endereço: ${endereco}.`;
+
+                // Exibe a mensagem no parágrafo com id="resultado" e define a cor azul
+                document.getElementById('resultado').style.color = 'blue';
+                document.getElementById('resultado').innerText = mensagem;
+            }
+        }
+    </script>
+
+</body>
+</html>
